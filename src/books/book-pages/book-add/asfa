@@ -1,0 +1,92 @@
+import React from "react";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+export default class ClientBookSaver extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            form: {
+                bookAutor: '',
+                bookName: '',
+                publishingHouse: '',
+                bookLanguage: '',
+                bookFormat: '',
+                bookISBN: '',
+            }
+        }
+    }
+
+    handleChange = (e) => {
+        // console.log(e);
+        console.log(e.target);
+        const fieldName = e.target.name;
+        const fieldValue = e.target.value;
+        this.setState({form: {...this.state.form, [fieldName]: fieldValue}})
+    };
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.form);
+        axios.post("http://localhost:8080/book", this.state.form).then(
+            data => {
+                console.log(data)
+            }
+        )
+
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <Form onSubmit={this.handleSubmit}>
+
+                    <Form.Group controlId="formBasic">
+                        <Form.Label>Enter book name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter book name" name="bookName"
+                                                              defaultValue={this.state.form.bookName}
+                                      onChange={this.handleChange}/>
+                        <Form.Text className="text-muted">
+                            Enter book name
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasic">
+                        <Form.Label>Enter publisher house</Form.Label>
+                        <Form.Control type="text" placeholder="Enter publisher house" name="publishingHouse"
+                                      defaultValue={this.state.form.publishingHouse}
+                                      onChange={this.handleChange}/>
+                        <Form.Text className="text-muted">
+                            Enter book published house
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasic">
+                        <Form.Label>Enter book format</Form.Label>
+                        <Form.Control type="text" placeholder="Enter book format" name=" bookFormat"
+                                      defaultValue={this.state.form.bookFormat}
+                                      onChange={this.handleChange}/>
+                        <Form.Text className="text-muted">
+                            Enter book format
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="bookISBN">
+                        <Form.Label>Enter book ISBN</Form.Label>
+                        <Form.Control type="text" placeholder="Enter book ISBN" name="bookISBN"
+                                      defaultValue={this.state.form.bookISBN}
+                                      onChange={this.handleChange}/>
+                        <Form.Text className="text-muted">
+                            Enter book ISBN
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
+        )
+    }
+}
