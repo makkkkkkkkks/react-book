@@ -10,8 +10,8 @@ class BooksContainer extends Component{
 
     render(){
         return(<div>
-            <BookAdd/>
-
+            {/*<BookAdd/>*/}
+<BookList/>
         </div>)
     }
 }

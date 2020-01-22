@@ -18,22 +18,22 @@ export default class BookAdd extends React.Component {
                 bookISBN: '',
             }
                     }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
 
     handleChange = (e) => {
        // console.log(e);
-        console.log(e.target);
+       //  console.log(e.target);
         const fieldName = e.target.name;
         const fieldValue = e.target.value;
         this.setState({form: {...this.state.form, [fieldName]: fieldValue}})
     };
     handleSubmit = (e) => {
         //console.log(this.state.form);
-      //  e.preventDefault();
-        const postBooksRequest = Object.assign({}, this.state);
+       e.preventDefault();
+        const postBooksRequest = Object.assign({}, this.state.form);
 
 
         postBooks(postBooksRequest).then(
@@ -49,7 +49,7 @@ export default class BookAdd extends React.Component {
         return (
 
             <div className="book-add">
-                <Form onSubmit={this.handleSubmit()}>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label> book name</Form.Label>
                         <Form.Control type="text" placeholder="Enter book name" name="bookName"
