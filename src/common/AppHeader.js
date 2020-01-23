@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './AppHeader.css';
+import BookListView from "../books/book-pages/book-list/BookListView";
 
 class AppHeader extends Component {
     render() {
@@ -23,6 +24,15 @@ class AppHeader extends Component {
                                         <li>
                                             <NavLink to="/addBook">addBook</NavLink>
                                         </li>
+
+                                        <li>
+                                            <NavLink to="/ListBook">Book List View</NavLink>
+                                        </li>
+
+                                        <li>
+                                            <NavLink to="/Chat">Chat</NavLink>
+                                        </li>
+
 
 
 

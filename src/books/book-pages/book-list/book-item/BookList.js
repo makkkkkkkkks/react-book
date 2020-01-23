@@ -1,9 +1,9 @@
 import React from "react";
 import CardDeck from 'react-bootstrap/CardDeck';
-import BookItem from "./book-item/BookItem";
-import {getBooks} from '../../../util/APIUtils';
+import BookItem from "./BookItem";
+import {getBooks} from '../../../../util/APIUtils';
 
-import "./cardimg.css"
+import "../cardimg.css"
 
 export default class BookList extends React.Component {
     constructor(props) {

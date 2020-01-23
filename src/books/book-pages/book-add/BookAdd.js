@@ -10,7 +10,7 @@ export default class BookAdd extends React.Component {
         super(props);
         this.state = {
             form: {
-                bookAutor: '',
+                bookAuthor: '',
                 bookName: '',
                 publishingHouse: '',
                 bookLanguage: '',
@@ -59,7 +59,7 @@ export default class BookAdd extends React.Component {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>book author</Form.Label>
                         <Form.Control type="text" placeholder="Enter book author" name="bookAuthor"
-                                      defaultValue={this.state.form.bookAutor}  onChange={this.handleChange}/>
+                                      defaultValue={this.state.form.bookAuthor}  onChange={this.handleChange}/>
                     </Form.Group>
 
 
