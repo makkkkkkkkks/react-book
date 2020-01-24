@@ -2,7 +2,8 @@ import React from "react";
 import CardDeck from 'react-bootstrap/CardDeck';
 import BookItem from "./BookItem";
 import {getBooks} from '../../../../util/APIUtils';
-
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import "../cardimg.css"
 
 export default class BookList extends React.Component {
@@ -30,13 +31,14 @@ export default class BookList extends React.Component {
         return (
             <div className="card_img">
 
-                <CardDeck>
+                <CardGroup>
+
                     {this.state.booksList.map(book =>
                         <BookItem key={book.id} book={book}
                                   onBookClick={() => this.onBookClick(book)}
                         />)}
 
-                </CardDeck>
+                </CardGroup>
             </div>
         )
     }
