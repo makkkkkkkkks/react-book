@@ -32,6 +32,9 @@ class AppHeader extends Component {
                                         <li>
                                             <NavLink to="/Chat">Chat</NavLink>
                                         </li>
+                                        <li>
+                                            <NavLink to="/editBook">EditBook</NavLink>
+                                        </li>
 
 
 

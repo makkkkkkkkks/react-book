@@ -64,3 +64,12 @@ export function postBooks(postBooksRequest) {
         body: JSON.stringify(postBooksRequest)
     });
 }
+
+
+export function getCurrentBooks() {
+    return request({
+        url: API_BASE_URL + "/book/16",
+        method: 'GET',
+
+    });
+}

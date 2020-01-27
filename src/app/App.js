@@ -18,6 +18,8 @@ import './App.css';
 import BooksContainer from "../books/book-pages/book-add/BooksContainer";
 import BookListView from '../books/book-pages/book-list/BookListView'
 import Chat from "../chat/Chat";
+import test from "../user/profile/test";
+import BookEdit from "../books/book-pages/book-edit/BookEdit";
 
 
 class App extends Component {
@@ -85,6 +87,7 @@ class App extends Component {
 
                         <PrivateRoute path="/ListBook" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BookListView}/>
                         <PrivateRoute path="/chat" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Chat}/>
+                        <PrivateRoute path="/editBook" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BookEdit}/>
 
 
                         <Route path="/login"  render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
