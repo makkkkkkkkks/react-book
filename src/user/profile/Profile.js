@@ -44,7 +44,7 @@ class Profile extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <UserBookList/>
+                    <UserBookList props={this.props.navigation}/>
                 </Row>
 
             </Container>

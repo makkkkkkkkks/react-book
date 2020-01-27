@@ -66,9 +66,9 @@ export function postBooks(postBooksRequest) {
 }
 
 
-export function getCurrentBooks() {
+export function getBookById(id) {
     return request({
-        url: API_BASE_URL + "/book/16",
+        url: API_BASE_URL + "/book/" + id,
         method: 'GET',
 
     });

@@ -9,6 +9,5 @@ export default (props) => (
         <div className="col">{props.book.bookLanguage}</div>
         <div className="col">{props.book.bookFormat}</div>
         <div className="col">{props.book.bookISBN}</div>
-        <div className="col">{}</div>
     </div>
 )
