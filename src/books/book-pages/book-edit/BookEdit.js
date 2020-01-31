@@ -21,11 +21,11 @@ class BookEdit extends React.Component{
 
     }
 
-    componentDidMount() {
-        if (this.props.location.state.book) {
-            this.setState({ form : this.props.location.state.book })
-        }
-    }
+    // componentDidMount() {
+    //     if (this.props.location.state.book) {
+    //         this.setState({ form : this.props.location.state.book })
+    //     }
+    // }
 
 
     handleChange = (e) => {

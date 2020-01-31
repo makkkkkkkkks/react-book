@@ -3,17 +3,20 @@ import React, {Component} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import './Profile.css';
 import UserBookList from "../../books/UserBookList";
+import Example from "../../books/book-pages/book-edit/Example";
 
 class Profile extends Component {
     constructor(props) {
         super(props);
+        this.text= 'sadas'
     }
 
     render() {
         return (
 
+         <div>
 
-            <Container>
+             <Container>
                 <Row>
                     <Col md={4}>
                         <div className="profile-container">
@@ -40,14 +43,16 @@ class Profile extends Component {
                         </div>
                     </Col>
                     <Col md={{span: 4, offset: 4}}>
-                        <div>test</div>
+                        <div><Example text={this.text}/></div>
                     </Col>
                 </Row>
                 <Row>
                     <UserBookList props={this.props.navigation}/>
                 </Row>
 
+
             </Container>
+             </div>
         );
     }
 }
