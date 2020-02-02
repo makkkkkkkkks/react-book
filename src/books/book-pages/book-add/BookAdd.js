@@ -21,7 +21,7 @@ export default class BookAdd extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-
+   localButton = this.props.button;
 
     handleChange = (e) => {
        // console.log(e);
@@ -46,6 +46,7 @@ export default class BookAdd extends React.Component {
 
 
     render() {
+
         return (
 
             <div className="book-add">
@@ -90,11 +91,15 @@ export default class BookAdd extends React.Component {
                                       name="bookISBN"
                                       defaultValue={this.state.form.bookISBN}  onChange={this.handleChange}/>
                     </Form.Group>
+                    <div>
+                        {this.props.localButton ? (
+                           <div/>
+                        ) : (
+                            <Button variant="primary" type="submit">  Add Book  </Button>
+                        )}
+                    </div>
 
 
-                    <Button variant="primary" type="submit">
-                        Add Book
-                    </Button>
                 </Form>
             </div>
         )
