@@ -93,7 +93,7 @@ export default class BookAdd extends React.Component {
                     </Form.Group>
                     <div>
                         {this.props.localButton ? (
-                           <div/>
+                            <Button variant="primary" type="submit">  Save changes  </Button>
                         ) : (
                             <Button variant="primary" type="submit">  Add Book  </Button>
                         )}

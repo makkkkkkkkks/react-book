@@ -15,20 +15,12 @@ function ModalBookEditing(props) {
 
     return (
         <div>
-
             <Button variant="primary" onClick={handleShow}> Edit book </Button>
-
             <Modal show={show} onHide={handleClose}>
-
                 <Modal.Header closeButton>
                     <Modal.Title>Form Editing Book</Modal.Title>
                 </Modal.Header>
-                <Modal.Body> <BookAdd localButton={props.localButton} text={props.text}/> </Modal.Body>
-                <div>{props.text} TEXT MUST BE HERE</div>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                    <Button variant="primary" onClick={handleClose}>Save Changes </Button>
-                </Modal.Footer>
+                <Modal.Body> <BookAdd localButton={props.localButton}/> </Modal.Body>
             </Modal>
         </div>
     );
