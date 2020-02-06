@@ -3,31 +3,39 @@ import ChatInput from "./ChatInput";
 import {Container, Row, Col} from 'reactstrap';
 import ChatsList from "./chats-list/ChatsList";
 import ShortMessage from "./message-model/ShortMessage";
+import {testWebsocket} from "../util/APIUtils";
+import WebSockets from "../util/WebSockets";
+
 
 class Chat extends Component {
+    constructor(props) {
+        super(props);
+    }
+
 
     render() {
-       // let message={authorPic= "";
+
         return (
             <div>
-                <Container>
-                    <Row>
-                        <Col xs="4"><ChatsList/></Col>
-                        <ShortMessage
+                <WebSockets/>
+                {/*<Container>*/}
+                {/*    <Row>*/}
+                {/*        <Col xs="4"><ChatsList/></Col>*/}
+                {/*        /!* <ShortMessage*!/*/}
 
-                       //     pictures={message.authorPic}
+                {/*             pictures={message.authorPic}/}
 
-                        />
+                {/*        /!* />*!/*/}
+                {/*      */}
+                {/*        < Col xs="8">*/}
 
-                        < Col xs="8">
+                {/*            <Row>*/}
+                {/*                <div>TEXT FROM CHAT</div>*/}
+                {/*            </Row>*/}
+                {/*            <ChatInput/></Col>*/}
+                {/*    </Row>*/}
 
-                            <Row>
-                                <div>TEXT FROM CHAT</div>
-                            </Row>
-                            <ChatInput/></Col  >
-                    </Row>
-
-                </Container>
+                {/*</Container>*/}
 
             </div>
         )

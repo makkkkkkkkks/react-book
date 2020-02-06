@@ -1,9 +1,13 @@
 import {API_BASE_URL, ACCESS_TOKEN} from '../constants';
+import {Stomp} from "@stomp/stompjs/esm5/compatibility/stomp";
+import React from 'react';
+import SockJS from 'sockjs-client';
 
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
     })
+
 
     if (localStorage.getItem(ACCESS_TOKEN)) {
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
@@ -23,6 +27,7 @@ const request = (options) => {
         );
 };
 
+
 export function getCurrentUser() {
     if (!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
@@ -33,6 +38,7 @@ export function getCurrentUser() {
         method: 'GET'
     });
 }
+
 
 export function login(loginRequest) {
     return request({
@@ -57,6 +63,7 @@ export function getBooks() {
         //  body: JSON.stringify(signupRequest)
     });
 }
+
 export function postBooks(postBooksRequest) {
     return request({
         url: API_BASE_URL + "/book",
@@ -72,4 +79,27 @@ export function getBookById(id) {
         method: 'GET',
 
     });
+}
+
+export function testWebsocket() {
+    const ws = new WebSocket('ws://localhost:3000/ws')
+    return request({
+        url: ws,
+
+    });
+}
+
+
+let stompClient = null
+const handlers = []
+
+export function connect() {
+    let socket = new SockJS('/gs-guide-websocket')
+    stompClient = Stomp.over(socket)
+    stompClient.connect({}, frame => {
+        console.log('Connected: ' + frame)
+        stompClient.subscribe('/topic/activity', message => {
+            handlers.forEach(handler => handler(JSON.parse(message.body)))
+        })
+    })
 }
