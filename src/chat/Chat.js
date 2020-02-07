@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import ChatInput from "./ChatInput";
-import {Container, Row, Col} from 'reactstrap';
-import ChatsList from "./chats-list/ChatsList";
-import ShortMessage from "./message-model/ShortMessage";
-import {testWebsocket} from "../util/APIUtils";
-import WebSockets from "../util/WebSockets";
+// import ChatInput from "./ChatInput";
+// import {Container, Row, Col} from 'reactstrap';
+// import ChatsList from "./chats-list/ChatsList";
+// import ShortMessage from "./message-model/ShortMessage";
+import TestWS from "./TestWS";
+
+
 
 
 class Chat extends Component {
@@ -17,7 +18,7 @@ class Chat extends Component {
 
         return (
             <div>
-                <WebSockets/>
+                <TestWS/>
                 {/*<Container>*/}
                 {/*    <Row>*/}
                 {/*        <Col xs="4"><ChatsList/></Col>*/}

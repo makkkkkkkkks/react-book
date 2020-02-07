@@ -1,7 +1,5 @@
-import {API_BASE_URL, ACCESS_TOKEN} from '../constants';
-import {Stomp} from "@stomp/stompjs/esm5/compatibility/stomp";
+import {ACCESS_TOKEN, API_BASE_URL} from '../constants';
 import React from 'react';
-import SockJS from 'sockjs-client';
 
 const request = (options) => {
     const headers = new Headers({
@@ -81,25 +79,6 @@ export function getBookById(id) {
     });
 }
 
-export function testWebsocket() {
-    const ws = new WebSocket('ws://localhost:3000/ws')
-    return request({
-        url: ws,
-
-    });
-}
 
 
-let stompClient = null
-const handlers = []
 
-export function connect() {
-    let socket = new SockJS('/gs-guide-websocket')
-    stompClient = Stomp.over(socket)
-    stompClient.connect({}, frame => {
-        console.log('Connected: ' + frame)
-        stompClient.subscribe('/topic/activity', message => {
-            handlers.forEach(handler => handler(JSON.parse(message.body)))
-        })
-    })
-}
