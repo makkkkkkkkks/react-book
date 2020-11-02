@@ -3,14 +3,11 @@ import BookAdd from "./BookAdd";
 
 
 class BooksContainer extends Component {
-
-
     render() {
         return (<div>
-            <BookAdd />
+            <BookAdd/>
         </div>)
     }
 }
-
 export default BooksContainer
 

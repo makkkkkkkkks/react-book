@@ -17,11 +17,9 @@ class ChatsList extends React.Component {
                     </Form.Group>
                 </Form>
 
-
             </div>
         );
     }
-
 }
 
 export default ChatsList;

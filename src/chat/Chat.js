@@ -1,43 +1,30 @@
 import React, {Component} from 'react';
-// import ChatInput from "./ChatInput";
-// import {Container, Row, Col} from 'reactstrap';
-// import ChatsList from "./chats-list/ChatsList";
 // import ShortMessage from "./message-model/ShortMessage";
+import FindUsers from "./FIndeUsers";
+import ChatProfile from "./ChatProfile";
+import Button from 'react-bootstrap/Button'
+import "./Chat.css";
+import CustomTextArea from "./CustomTextArea";
+import ActiveChatUsers from "./ActiveChatUsers";
+import MessageListBox from "./MessageListBox";
 import TestWS from "./TestWS";
-
-
-
 
 class Chat extends Component {
     constructor(props) {
         super(props);
     }
 
-
     render() {
-
         return (
-            <div>
-                <TestWS/>
-                {/*<Container>*/}
-                {/*    <Row>*/}
-                {/*        <Col xs="4"><ChatsList/></Col>*/}
-                {/*        /!* <ShortMessage*!/*/}
-
-                {/*             pictures={message.authorPic}/}
-
-                {/*        /!* />*!/*/}
-                {/*      */}
-                {/*        < Col xs="8">*/}
-
-                {/*            <Row>*/}
-                {/*                <div>TEXT FROM CHAT</div>*/}
-                {/*            </Row>*/}
-                {/*            <ChatInput/></Col>*/}
-                {/*    </Row>*/}
-
-                {/*</Container>*/}
-
+            <div className="grid-container ">
+                <div className="chat chat-border "></div>
+                <div className="chat-profile"><ChatProfile currentUser={this.props.currentUser}/></div>
+                <div className="chat-find-users"><FindUsers/></div>
+                <div className="chat-users"><ActiveChatUsers/></div>
+                <div className="chat-message"><MessageListBox/></div>
+                <div className="text-area"><CustomTextArea/></div>
+                <div className="chat-send-button"><Button variant="primary">Send</Button></div>
+                <div><TestWS/></div>
             </div>
         )
     }

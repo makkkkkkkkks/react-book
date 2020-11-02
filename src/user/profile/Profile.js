@@ -34,14 +34,16 @@ class Profile extends Component {
                                             }
                                         </div>
                                         <div className="profile-name">
+
                                             <h2>{this.props.currentUser.name}</h2>
+                                            <h2>{this.props.currentUser.id}</h2>
                                             <p className="profile-email">{this.props.currentUser.email}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </Col>
-                        <Col md={{span: 4, offset: 4}}>
+                        <Col md={{span:3, offset: 3}}>
                             <div><ModalBookEditing localButton={this.localButton} text={this.text}/></div>
                         </Col>
                     </Row>

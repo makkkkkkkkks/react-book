@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
 import Login from '../user/login/Login';
@@ -80,18 +80,14 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home}/>
 
-
-                        <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Profile}/>
-                        <PrivateRoute path="/addBook" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BooksContainer}/>
-
+                        <PrivateRoute path="/profile"  authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Profile}/>
+                        <PrivateRoute path="/addBook"  authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BooksContainer}/>
                         <PrivateRoute path="/ListBook" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BookListView}/>
-                        <PrivateRoute path="/chat" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Chat}/>
+                        <PrivateRoute path="/chat"     authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Chat}/>
                         <PrivateRoute path="/editBook" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={BookEdit}/>
-
 
                         <Route path="/login"  render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup" render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
-
                         <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
                         <Route component={NotFound}/>
                     </Switch>

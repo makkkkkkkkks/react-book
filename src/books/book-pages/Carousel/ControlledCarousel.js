@@ -3,7 +3,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import First from '../Carousel/carousel-img/firts.jpg';
 import Second from '../Carousel/carousel-img/second.jpg';
 import Third from '../Carousel/carousel-img/thirst.jpg';
-import Image from 'react-bootstrap/Image';
 
 
 function ControlledCarousel() {

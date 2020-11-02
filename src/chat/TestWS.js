@@ -1,49 +1,87 @@
 import React from 'react';
 import SockJS from 'sockjs-client';
-import {ACCESS_TOKEN} from "../constants";
 import {Stomp} from '@stomp/stompjs';
+import {ACCESS_TOKEN} from "../constants";
+//import Websocket from "react-websocket/index";
+
+
+const headersB = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    "Authorization": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjA0MTcyNzg3LCJleHAiOjE2MDUwMzY3ODd9.z5pUEGYfEkzLoWhq1p_c9umQmZVsLcY3WJ3bCWwwjaZ13IbH2hxPVFO9FQ7YK65VlOi5y8hX51ScEC0Irt8JKQ"
+};
 
 class TestWS extends React.Component {
     constructor(props) {
         super(props);
     }
 
-// async
     componentDidMount() {
-        const headers = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                "Authorization": "Bearer " + localStorage.getItem(ACCESS_TOKEN)
-            }
-        };
-        // const response = await fetch('http://localhost:8080/gs-guide-websocket', headers);
-        // console.log(response)
-        // const socketa = new WebSocket('ws://localhost:8080/gs-guide-websocket');
-        // socketa.addEventListener('message', async (event: any) => {
-        //     const message = JSON.parse(event.data);
-        //     const request = await fetch(`http://localhost:8080/profiles/${message.id}`, headers);
-        //     const profile = await request.json();
-        //     this.state.profiles.push(profile);
-        //     this.setState({profiles: this.state.profiles});
-        // });
+        console.log("Authorization", 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+        /*    console.log(headersB)*/
+    }
 
-        let socket = new WebSocket("ws://localhost:8080/gs-guide-websocket" , ["access_token", + localStorage.getItem(ACCESS_TOKEN)]);
-        let ws = Stomp.over(socket);
-        console.log(socket);
+    closeConnection() {
+    }
 
+    openConnection() {
+        let socket = new SockJS("http://localhost:8080/gs-guide-websocket");
         let stompClient = Stomp.over(socket);
-        stompClient.connect({}, function(frame) {
-            console.log(stompClient.connect())
-         });
+        stompClient.connect(headersB, frame => {
+            console.log('Connected: ' + frame)
+            stompClient.subscribe('/topic/greetings', message => {
+                console.log(message)
+                //handlers.forEach(handler => handler(JSON.parse(message.body)))
+                stompClient.send('/app/hello', headersB, 'dasdasdas');
+            });
 
+        });
+        console.log(headersB)
+    }
+
+    sendMessage() {
+    }
+
+    /* var stompClient = null;
+
+     function connect() {
+         stompClient = Stomp.client('ws://localhost:8080/ws');
+         stompClient.connect({}, function (frame) {
+             stompClient.subscribe('/topic/greetings', function (response) {
+                 showGreeting(JSON.parse(response.body).content);
+             });
+         });
+     }
+
+     function sendName() {
+         stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+     }
+
+     function showGreeting(message) {
+         $("#greetings").append("<tr><td>" + message + "</td></tr>");
+     }
+
+     $(function () {
+         connect();
+         $("form").on('submit', function (e) {
+             e.preventDefault();
+         });
+         $( "#send" ).click(function() { sendName(); });
+     });
+     */
+
+    closeConnection() {
+        let socket = new SockJS("http://localhost:8080/gs-guide-websocket");
+        let stompClient = Stomp.over(socket);
 
     }
 
     render() {
         return (
             <div>
-                connect
+                <button onClick={this.openConnection}> Open connection</button>
+                <button onClick={this.closeConnection}> Close connection</button>
+                <button onClick={this.sendMessage}> Send text</button>
             </div>
         );
     }

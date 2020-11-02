@@ -8,7 +8,7 @@ class AppHeader extends Component {
             <header className="app-header">
                 <div className="container">
                     <div className="app-branding">
-                        <Link to="/" className="app-title">Spring Social</Link>
+                        <Link to="/" className="app-title">Kykyna Paputi</Link>
                     </div>
                     <div className="app-options">
                         <nav className="app-nav">
@@ -17,14 +17,12 @@ class AppHeader extends Component {
                                     <li>
                                         <NavLink to="/profile">Profile</NavLink>
                                     </li>
+
                                     <li>
-                                        <a onClick={this.props.onLogout}>Logout</a>
+                                        <NavLink to="/addBook">Add Book</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/addBook">addBook</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to="/ListBook">Book List View</NavLink>
+                                        <NavLink to="/ListBook">Your library</NavLink>
                                     </li>
 
                                     <li>
@@ -32,6 +30,9 @@ class AppHeader extends Component {
                                     </li>
                                     <li>
                                         <NavLink to="/editBook">EditBook</NavLink>
+                                    </li>
+                                    <li>
+                                        <a onClick={this.props.onLogout}>Logout</a>
                                     </li>
                                 </ul>
                             ) : (

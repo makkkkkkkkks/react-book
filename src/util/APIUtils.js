@@ -1,16 +1,13 @@
 import {ACCESS_TOKEN, API_BASE_URL} from '../constants';
-import React from 'react';
+
 
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
     })
-
-
     if (localStorage.getItem(ACCESS_TOKEN)) {
-        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+        headers.append("Authorization", 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }
-
     const defaults = {headers: headers};
     options = Object.assign({}, defaults, options);
 
@@ -37,7 +34,6 @@ export function getCurrentUser() {
     });
 }
 
-
 export function login(loginRequest) {
     return request({
         url: API_BASE_URL + "/auth/login",
@@ -58,7 +54,6 @@ export function getBooks() {
     return request({
         url: API_BASE_URL + "/book",
         method: 'GET',
-        //  body: JSON.stringify(signupRequest)
     });
 }
 
@@ -75,7 +70,6 @@ export function getBookById(id) {
     return request({
         url: API_BASE_URL + "/book/" + id,
         method: 'GET',
-
     });
 }
 

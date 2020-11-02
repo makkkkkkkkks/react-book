@@ -1,0 +1,9 @@
+.custom-text-area {
+    height: 50px;
+    width: 540px;
+    resize: none;
+    border-color: #1e88e5;
+    border-radius: 6px;
+    opacity: 100%;
+    padding-top: 5px;
+}
